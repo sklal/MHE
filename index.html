@@ -158,7 +158,7 @@
             var chart = new google.visualization.ColumnChart(document.getElementById("mil_pc_div"));
             chart.draw(data, options);
         } 
-        // 4) Area Chart: Per capita military expenditure 2010-2017 
+        //  Area Chart: Per capita military expenditure 2010-2017 
         function HM_Mean(response) {
             var data = response.getDataTable();
             data.sort({column: 1, desc: true});
@@ -191,7 +191,7 @@
             };
             var chart = new google.visualization.AreaChart(document.getElementById("health_mean_div"));
             chart.draw(data, options);
-        } // 5) Areas-log: average expenditure on health 2010-2017
+        } // Areas-log: average expenditure on health 2010-2017
 
                 function Health_GDP (response) {
             var data = response.getDataTable();
