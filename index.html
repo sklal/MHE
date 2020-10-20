@@ -32,7 +32,7 @@
             drawSheet('MHE', 'SELECT A,B,D', HM_Mean); // Average Health & Military Spending
             drawSheet('MHE', 'SELECT H,J,K', EM_Compare); // Average Education & Military
             drawSheet('MHE', 'SELECT A,C,D', Edmil);
-            drawSheet('percentage_change_pc', 'SELECT H,I,J,K,L', Education_PercentageChange);
+            //drawSheet('percentage_change_pc', 'SELECT H,I,J,K,L', Education_PercentageChange);
             drawSheet('edu_exp_pc', 'SELECT N,O,P,Q,R,S,T,U,V,W,X,Y,Z,AA,AB,AC,AD,AE,AF,AG', Education_PercentageChangeCount);
             drawSheet('edu_exp_total', 'SELECT A,L', Education_Mean);
             drawSheet('MHE', 'SELECT M,Q,N', PCM_PCGDP); // Per Capita Military vs Per Capita GDP
@@ -126,7 +126,7 @@
             var data = response.getDataTable();
             var options = {
                 chartArea:{width:'75%',height:'65%'},
-                title: 'Military spending per person GDP  (2010-2017)',
+                title: 'Military spending per Capita GDP  (2010-2017)',
                 titleTextStyle: {color: '#222529', bold: true, fontSize: 18},
                 backgroundColor: '#f8f9fa', 
                 bar: { groupWidth: "90%"}, 
@@ -212,7 +212,7 @@
         } // Pie: GDP by country on 2018
         
         
-
+        // Column Chart : Health per Capita
         function Health_PercentageChangeCount (response) {
             var data = response.getDataTable();
             var options = {
@@ -247,7 +247,9 @@
             };
             var chart = new google.visualization.ColumnChart(document.getElementById("health_pc_abs_change_div"));
             chart.draw(data, options);
-        } // 7) Lines: Change in health expenditure 2010-2017 (absolute values)          
+        } 
+        
+        // Lines: Change in health expenditure 2010-2017          
 
         function Education_Mean(response){
             var data = response.getDataTable();
@@ -287,7 +289,7 @@
 
         }    
  
-
+        // Area : Education vs Military
         function Edmil (response) {
             var data = response.getDataTable();
             data.sort({column: 1, desc: true});
@@ -333,7 +335,7 @@
             };
             var chart = new google.visualization.AreaChart(document.getElementById('edu_mil_compared_div'));
             chart.draw(data, options);
-        } // 11) Area: Expenditure on Education vs military 
+        } // Area: Expenditure on Education vs military 
 
           function EM_Compare (response) {
             var data = response.getDataTable();
@@ -351,9 +353,9 @@
             };
             var chart = new google.visualization.PieChart(document.getElementById('compare_all_div'));
             chart.draw(data, options);
-        } // Comparison between education and military per capita expenditure, average spending 2012-2016
+        } // Comparison between education and military 
 
-        // CandleStick: Percentage Change in Education Expenditure
+        // CandleStick: Percentage Change in Education Expenditure - Not used in final page 
         function Education_PercentageChange (response) {
             //data.sort({column: 4, desc: true});
             var data = response.getDataTable();
@@ -387,6 +389,7 @@
             chart.draw(data, options);
         } 
 
+        // Column: Change in education expenditure 2010-2017 (absolute values)
         function Education_PercentageChangeCount (response) {
             var data = response.getDataTable();
             var options = {
@@ -422,8 +425,10 @@
             };
             var chart = new google.visualization.ColumnChart(document.getElementById("edu_pc_abs_change_div"));
             chart.draw(data, options);
-        } // 13) Lines: Change in education expenditure 2010-2017 (absolute values)  
+        } 
+          
     
+        // Geo: GDP by country in 2018
         function GDP_All (response) {
             var data = response.getDataTable();
             var options = {
@@ -440,8 +445,9 @@
             };
             var chart = new google.visualization.GeoChart(document.getElementById('gdp2018_div'));
             chart.draw(data, options);
-        } // Geo: GDP by country on 2018
+        } 
 
+        // Line - Average Health
         function GDP_H (response) {
             var data = response.getDataTable();
             var options = {
@@ -478,6 +484,8 @@
             chart.draw(data, options);
         }
 
+        // Area - Military per Capita vs GDP per Capita
+
           function PCM_PCGDP (response) {
             var data = response.getDataTable();
            var options = {
@@ -500,6 +508,7 @@
             chart.draw(data, options);
         }
 
+        // Area - Health per Capita vs GDP per Capita
         function PCH_PCGDP (response) {
             var data = response.getDataTable();
            var options = {
@@ -521,6 +530,8 @@
             var chart = new google.visualization.SteppedAreaChart(document.getElementById('hpc_pcgdp_div'));
             chart.draw(data, options);
         }
+
+        // Area - Education per Capita vs GDP per Capita
 
         function PCE_PCGDP (response) {
             var data = response.getDataTable();
@@ -544,6 +555,8 @@
             chart.draw(data, options);
         }
 
+
+        // Pie - Combo 
         function Combo (response) {
             var data = response.getDataTable();
             var options = {
@@ -559,7 +572,7 @@
             };
             var chart = new google.visualization.PieChart(document.getElementById('combo_div'));
             chart.draw(data, options);
-        } // Pie: 
+        }  
 
 
         </script>
@@ -732,6 +745,7 @@
                         <div id="edu_avg_div" style="width: 900px; height: 500px;"></div>
                     </div>
                     <ul class = "listcls">
+                    <li> United States, Japan & China have the largest share in terms absolute numbers
                     </ul>
 
                     <br>
